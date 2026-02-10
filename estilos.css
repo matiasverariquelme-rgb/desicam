@@ -319,5 +319,11 @@ textarea {
     max-width: 150px; /* ajusta tamaño del logo */
     height: auto;
 }
+select {
+  font-size: 0.85rem;
+  color: #34495e;
+  text-align: left;
+}
+
 
 
