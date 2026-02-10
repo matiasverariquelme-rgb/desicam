@@ -43,15 +43,33 @@
       </button>
 
     </form>
+    <div id="mensajeGracias">
+      <h2>¡Gracias por contactarnos!</h2>
+      <p>Pronto nos comunicaremos contigo.</p>
+      <p>Serás redirigido a la página de inicio en unos segundos...</p>
+    </div>
   </main>
 
   <script>
     function registrarConversion() {
-      gtag('event','conversion', {
-        'send_to': 'AW-XXXXXXX/FORM123'
-      });
+      gtag('event','conversion', {'send_to':'AW-XXXXXXX/FORM123'});
     }
+
+    const form = document.getElementById('miForm');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault(); // evita recargar la página
+      registrarConversion(); // registra la conversión
+      form.style.display = 'none'; // oculta el formulario
+      document.getElementById('mensajeGracias').style.display = 'block'; // muestra mensaje
+
+      // Redirigir automáticamente a la página de inicio después de 5 segundos
+      setTimeout(function(){
+        window.location.href = "index.html"; // reemplaza "index.html" con tu página de inicio real
+      }, 5000);
+    });
   </script>
 
 </body>
 </html>
+
