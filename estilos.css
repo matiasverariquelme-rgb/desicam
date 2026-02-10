@@ -310,3 +310,14 @@ textarea {
   position: relative;
   z-index: 10;
 }
+.logo {
+    text-align: center; /* centra el logo */
+    margin-bottom: 5px; /* reduce el espacio entre logo y título */
+}
+
+.logo img {
+    max-width: 150px; /* ajusta tamaño del logo */
+    height: auto;
+}
+
+
