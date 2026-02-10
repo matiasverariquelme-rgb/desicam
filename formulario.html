@@ -2,14 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Contacto Psicóloga Online</title>
-
-  <meta name="description" content="Formulario de contacto para atención psicológica online.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>Formulario de Contacto</title>
   <link rel="stylesheet" href="estilos.css">
-
-  <!-- GOOGLE ADS -->
+  
+  <!-- Google Ads Global Site Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -18,60 +14,72 @@
     gtag('config', 'AW-XXXXXXX');
   </script>
 </head>
-
 <body>
 
-  <main class="box">
-    <h1>Formulario de Contacto</h1>
-    <p class="sub">Déjanos tus datos y te contactaremos a la brevedad.</p>
+<main class="box">
+  <h1>Formulario de Contacto</h1>
+  <p class="sub">Déjanos tus datos y te contactaremos a la brevedad.</p>
 
-    <form action="index.html" method="post" onsubmit="registrarConversion()">
+  <form id="miForm" action="https://formspree.io/f/abcd1234" method="POST">
+    <label for="nombre">Nombre</label>
+    <input id="nombre" name="nombre" type="text" required>
 
-      <label for="nombre">Nombre</label>
-      <input id="nombre" type="text" required>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required>
 
-      <label for="email">Email</label>
-      <input id="email" type="email" required>
-      <label for="telefono">Teléfono</label>
-      <input id="telefono" name="telefono" type="tel" required>
+    <label for="telefono">Teléfono</label>
+    <input id="telefono" name="telefono" type="tel" required>
 
-      <label for="mensaje">Mensaje</label>
-      <textarea id="mensaje" rows="4" required></textarea>
+    <label for="mensaje">Mensaje</label>
+    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
 
-      <button type="submit" class="btn formulario">
-        Enviar formulario
-      </button>
+    <button type="submit" class="btn formulario">Enviar formulario</button>
+  </form>
 
-    </form>
-    <div id="mensajeGracias">
-      <h2>¡Gracias por contactarnos!</h2>
-      <p>Pronto nos comunicaremos contigo.</p>
-      
-    </div>
-  </main>
+  <!-- Mensaje de Gracias -->
+  <div id="mensajeGracias" style="display:block;">
+    <h2>¡Gracias por contactarnos!</h2>
+    <p>Pronto nos comunicaremos contigo.</p>
+  </div>
 
-  <script>
-    function registrarConversion() {
-      gtag('event','conversion', {'send_to':'AW-XXXXXXX/FORM123'});
-    }
+  <!-- Botón al inicio -->
+  <div style="margin-top: 20px;">
+    <button class="btn formulario" onclick="window.location.href='index.html'">
+      Volver al inicio
+    </button>
+  </div>
+</main>
 
-    const form = document.getElementById('miForm');
+<script>
+  function registrarConversion() {
+    gtag('event','conversion', {'send_to':'AW-XXXXXXX/FORM123'});
+  }
 
-    form.addEventListener('submit', function(e){
-      e.preventDefault(); // evita recargar la página
-      registrarConversion(); // registra la conversión
-      form.style.display = 'none'; // oculta el formulario
-      document.getElementById('mensajeGracias').style.display = 'block'; // muestra mensaje
+  const form = document.getElementById('miForm');
 
-      // Redirigir automáticamente a la página de inicio después de 5 segundos
-      setTimeout(function(){
-        window.location.href = "index.html"; // reemplaza "index.html" con tu página de inicio real
-      }, 5000);
-    });
-  </script>
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); // evita recargar la página
+    registrarConversion(); // Google Ads
+
+    // Enviar datos a Formspree
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        form.style.display = 'none'; // oculta el formulario
+        document.getElementById('mensajeGracias').style.display = 'block'; // muestra mensaje
+      } else {
+        alert("Hubo un error, intenta de nuevo.");
+      }
+    }).catch(error => alert("Hubo un error, intenta de nuevo."));
+  });
+</script>
 
 </body>
 </html>
+
 
 
 
