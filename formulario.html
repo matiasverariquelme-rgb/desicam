@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacto Psicóloga Online</title>
+
+  <meta name="description" content="Formulario de contacto para atención psicológica online.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="estilos.css">
+
+  <!-- GOOGLE ADS -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-XXXXXXX');
+  </script>
+</head>
+
+<body>
+
+  <main class="box">
+    <h1>Formulario de Contacto</h1>
+    <p class="sub">Déjanos tus datos y te contactaremos a la brevedad.</p>
+
+    <form action="gracias.html" method="post" onsubmit="registrarConversion()">
+
+      <label for="nombre">Nombre</label>
+      <input id="nombre" type="text" required>
+
+      <label for="email">Email</label>
+      <input id="email" type="email" required>
+      <label for="telefono">Teléfono</label>
+      <input id="telefono" name="telefono" type="tel" required>
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" rows="4" required></textarea>
+
+      <button type="submit" class="btn formulario">
+        Enviar formulario
+      </button>
+
+    </form>
+  </main>
+
+  <script>
+    function registrarConversion() {
+      gtag('event','conversion', {
+        'send_to': 'AW-XXXXXXX/FORM123'
+      });
+    }
+  </script>
+
+</body>
+</html>
