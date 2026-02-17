@@ -302,13 +302,21 @@ textarea {
 .link-secundario {
   display: block;
   margin-top: 18px;
-  font-size: 0.8rem;
-  color: #7f8c8d;
-  text-decoration: underline;
+  padding: 12px 18px;
+  border-radius: 30px;
+  background: #2c3e50;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(44,62,80,0.25);
+  transition: all 0.3s ease;
 }
-.link-secundario {
-  position: relative;
-  z-index: 10;
+
+.link-secundario:hover {
+  background: #1f2d3a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(44,62,80,0.35);
 }
 .logo {
     text-align: center; /* centra el logo */
@@ -324,6 +332,7 @@ select {
   color: #34495e;
   text-align: left;
 }
+
 
 
 
